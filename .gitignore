@@ -40,5 +40,4 @@ yarn-error.log*
 next-env.d.ts
 tsconfig.json
 tailwind.config.ts
-components
 components.json
