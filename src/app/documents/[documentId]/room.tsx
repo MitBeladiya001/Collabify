@@ -49,9 +49,15 @@ export function Room({ children }: { children: ReactNode }) {
         return await response.json();
       }}
       resolveUsers={({ userIds }) => {
-        return userIds.map(
-          (userId) => users.find((user) => user.id === userId) ?? undefined
-        );
+        return userIds.map((userId) => {
+          const user = users.find((user) => user.id === userId);
+          if (!user) return undefined;
+          return {
+            name: user.name,
+            avatar: user.avatar,
+            color: "", // Provide a default color or fetch from user data if available
+          };
+        });
       }}
       resolveMentionSuggestions={({ text }) => {
         let filteredUsers = users;
