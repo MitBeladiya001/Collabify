@@ -5,6 +5,30 @@ Experience real-time editing, live presence, notifications, and a beautiful, acc
 
 ---
 
+## 🚀 Key Features
+
+- **Real-time Collaboration:**  
+  Developed with Liveblocks, supporting up to 50 concurrent users per room.  
+  Each user is visually distinguished by a unique cursor color for seamless multi-user tracking.
+
+- **Infinite Canvas Editor:**  
+  Built with Tiptap, enabling creation and editing of 10+ shape types (rectangle, ellipse, circle, and more) for flexible, interactive documents.
+
+- **Role-Based Access Control (RBAC):**  
+  Organizations can assign admin and member roles, ensuring secure collaboration and customizable workflows.
+
+- **Authentication:**  
+  Secure login & registration with Clerk, including organization support.
+
+- **Document Management:**  
+  Create, rename, delete, and share documents.  
+  Quick actions and dashboard for easy navigation.
+
+- **Notifications & Inbox:**  
+  Real-time notifications for mentions and document updates, with an accessible inbox panel.
+
+---
+
 ## 🎨 UI/UX Overview
 
 ### 🔑 Authentication
@@ -28,15 +52,16 @@ Experience real-time editing, live presence, notifications, and a beautiful, acc
 
 ---
 
-### 📝 Document Editor
+### 📝 Document Editor & Infinite Canvas
 - **Rich Text Editing:** Clean, distraction-free writing experience.
-- **Live Presence:** See who’s online and editing with avatars.
+- **Infinite Canvas:** Draw and edit shapes (rectangle, ellipse, circle, etc.) with Tiptap.
+- **Live Presence:** See who’s online and editing with avatars and colored cursors.
 - **Mentions:** Tag teammates and get instant notifications.
 - **Formatting Toolbar:** Bold, italic, underline, headings, lists, and more.
 - **Keyboard Shortcuts:** For power users.
 
 **🖼 Screenshots:**  
-![Editor](./public/screenshots/editor.png)  
+![Editor](./public/screenshots/editor.png)
 ![Live Presence](./public/screenshots/presence.png)  
 ![Mentions](./public/screenshots/mentions.png)
 
@@ -52,70 +77,97 @@ Experience real-time editing, live presence, notifications, and a beautiful, acc
 
 ---
 
-## 🛠️ Admin & Settings
+### 🛡️ Role-Based Access Control (RBAC)
+- **Admin & Member Roles:** Assign and manage roles within organizations.
+- **Secure Collaboration:** Only authorized users can access or modify documents.
+- **Customizable Workflows:** Tailor permissions for different teams.
+
+---
+
+
+---
+
+## 🛠️ Settings
 
 - **Document Management:** Rename, delete, and share documents.
 - **Organization Management:** Switch organizations, invite users.
 - **User Settings:** Update profile, avatar, and preferences.
 
 **🖼 Screenshots:**  
-![Rename Dialog](./public/screenshots/rename.png)  
-![Remove Dialog](./public/screenshots/remove.png)
+![Rename Dialog](./public/screenshots/rename-dialog.png)  
+![Remove Dialog](./public/screenshots/remove-dialog.png)
 
 ---
 
-## 🚀 Tech Stack
+## 🏗️ Project Structure
 
-- **Next.js** – App directory, SSR, and routing
-- **Convex** – Real-time database and backend
-- **Clerk** – Authentication and organization management
-- **Liveblocks** – Real-time collaboration and presence
-- **Tailwind CSS** – Utility-first CSS framework
+```
+google_doc/
+├── src/
+│   ├── app/
+│   │   ├── (home)/
+│   │   │   ├── documents-table.tsx
+│   │   │   ├── document-row.tsx
+│   │   │   ├── document-menu.tsx
+│   │   │   └── page.tsx
+│   │   └── documents/
+│   │       ├── [documentId]/
+│   │       │   ├── page.tsx
+│   │       │   ├── room.tsx
+│   │       │   ├── inbox.tsx
+│   │       │   ├── navbar.tsx
+│   │       │   ├── actions.ts
+│   │       │   └── ...
+│   ├── components/
+│   │   ├── ui/
+│   │   │   ├── button.tsx
+│   │   │   ├── dropdown-menu.tsx
+│   │   │   ├── table.tsx
+│   │   │   └── ...
+│   │   ├── rename-dialog.tsx
+│   │   ├── remove-dialog.tsx
+│   │   └── ...
+│   ├── hooks/
+│   │   └── use-debounce.ts
+│   └── ...
+├── convex/
+│   ├── documents.ts
+│   └── ...
+├── public/
+│   └── screenshots/
+│       ├── login.png
+│       ├── org-switcher.png
+│       ├── dashboard.png
+│       ├── dashboard-mobile.png
+│       ├── editor.png
+│       ├── canvas.png
+│       ├── presence.png
+│       ├── mentions.png
+│       ├── inbox.png
+│       ├── notification-toast.png
+│       ├── mobile-editor.png
+│       ├── mobile-menu.png
+│       ├── rename-dialog.png
+│       └── remove-dialog.png
+├── tsconfig.json
+├── next.config.js
+└── ...
+```
 
 ---
 
-## 📁 Project Structure
+## 🗝️ .env.local File Structure
 
+Create a `.env.local` file in the root of your project and add the following:
+
+```env
+CONVEX_DEPLOYMENT=your_convex_deployment_id
+NEXT_PUBLIC_CONVEX_URL=your_convex_url
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+LIVEBLOCKS_SECRET_KEY=your_liveblocks_secret_key
 ```
-src/
-  app/
-    (home)/
-      documents-table.tsx
-      document-row.tsx
-      document-menu.tsx
-      page.tsx
-    documents/
-      [documentId]/
-        page.tsx
-        room.tsx
-        inbox.tsx
-        navbar.tsx
-        actions.ts
-  components/
-    ui/
-      button.tsx
-      dropdown-menu.tsx
-      table.tsx
-    rename-dialog.tsx
-    remove-dialog.tsx
-  hooks/
-    use-debounce.ts
-public/
-  screenshots/
-    login.png
-    org-switcher.png
-    dashboard.png
-    dashboard-mobile.png
-    editor.png
-    presence.png
-    mentions.png
-    inbox.png
-    notification-toast.png
-    mobile-editor.png
-    mobile-menu.png
-    rename-dialog.png
-    remove-dialog.png
-```
+
+> Replace the values with your actual deployment keys.
 
 ---
 
@@ -165,4 +217,4 @@ MIT
 
 ---
 
-*This project is for educational/demo purposes and is not affiliated with Google.*
+*This project is for educational/demo purposes and is not
