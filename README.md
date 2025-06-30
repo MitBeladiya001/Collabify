@@ -94,8 +94,8 @@ Experience real-time editing, live presence, notifications, and a beautiful, acc
 - **User Settings:** Update profile, avatar, and preferences.
 
 **🖼 Screenshots:**  
-![Rename Dialog](./public/screenshots/rename-dialog.png)  
-![Remove Dialog](./public/screenshots/remove-dialog.png)
+![Rename Dialog](./public/screenshots/rename.png)  
+![Remove Dialog](./public/screenshots/remove.png)
 
 ---
 
