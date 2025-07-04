@@ -175,7 +175,7 @@ LIVEBLOCKS_SECRET_KEY=your_liveblocks_secret_key
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/MitBeladiya001/Collabify.git
+   git clone https://github.com/yourusername/Collabify.git
    cd Collabify/google_doc
    ```
 
